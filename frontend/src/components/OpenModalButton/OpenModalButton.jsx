@@ -13,7 +13,7 @@ function OpenModalButton({
 		setModalContent(modalComponent);
 		if (typeof onButtonClick === "function") onButtonClick();
 	};
-
+	//easter egg comment
 	return <button onClick={onClick}>{buttonText}</button>;
 }
 

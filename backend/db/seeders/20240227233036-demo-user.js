@@ -27,6 +27,31 @@ module.exports = {
 					username: "FakeUser2",
 					hashedPassword: bcrypt.hashSync("password3"),
 				},
+				{
+					email: "cyberwarrior23@gmail.com",
+					username: "CyberWarrior",
+					hashedPassword: bcrypt.hashSync("cyberSec@rity"),
+				},
+				{
+					email: "wanderlustgamer@email.com",
+					username: "WanderlustGamer",
+					hashedPassword: bcrypt.hashSync("adventur3r"),
+				},
+				{
+					email: "cosmicgamer@universe.net",
+					username: "CosmicGamer",
+					hashedPassword: bcrypt.hashSync("sp@ceGame1"),
+				},
+				{
+					email: "wizardlygamer@magicrealm.com",
+					username: "WizardlyGamer",
+					hashedPassword: bcrypt.hashSync("mysticP0w3r"),
+				},
+				{
+					email: "steampunkgamer@clockworks.io",
+					username: "SteampunkGamer",
+					hashedPassword: bcrypt.hashSync("brassandg3ars"),
+				},
 			],
 			{ validate: true }
 		);
@@ -35,12 +60,6 @@ module.exports = {
 	async down(queryInterface, Sequelize) {
 		options.tableName = "Users";
 		const Op = Sequelize.Op;
-		return queryInterface.bulkDelete(
-			options,
-			{
-				username: { [Op.in]: ["Demo-lition", "FakeUser1", "FakeUser2"] },
-			},
-			{}
-		);
+		return queryInterface.bulkDelete(options, {}, {});
 	},
 };

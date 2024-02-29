@@ -5,7 +5,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import * as sessionActions from "./store/session";
-import GameGrid from "./components/Games/GameGrid";
+import LandingPage from "./components/LandingPage/LandingPage";
+import GamePage from "./components/Games/GamePage";
 function Layout() {
 	const dispatch = useDispatch();
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: "/",
-				element: <GameGrid />,
+				element: <LandingPage />,
 			},
 			{
 				path: "login",
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
 			{
 				path: "signup",
 				element: <SignupFormPage />,
+			},
+			{
+				path: "games/:gameId",
+				element: <GamePage />,
 			},
 		],
 	},

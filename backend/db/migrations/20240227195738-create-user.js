@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === "production") {
 
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		const result = await queryInterface.createTable(
+		await queryInterface.createTable(
 			"Users",
 			{
 				id: {

@@ -13,7 +13,7 @@ const GamePage = () => {
 	}, [gameId]);
 	return (
 		<>
-			<div>GamePage</div>
+			<div>GamePage!!!!HELP</div>
 			<h1>{game.name}</h1>
 			<h2 dangerouslySetInnerHTML={{ __html: game.description }}></h2>
 			<p>{game.metacritic}</p>

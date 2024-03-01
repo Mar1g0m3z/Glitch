@@ -6,32 +6,36 @@ if (process.env.NODE_ENV === "production") {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		await queryInterface.createTable("Games", {
-			id: {
-				allowNull: false,
-				autoIncrement: true,
-				primaryKey: true,
-				type: Sequelize.INTEGER,
+		await queryInterface.createTable(
+			"Games",
+			{
+				id: {
+					allowNull: false,
+					autoIncrement: true,
+					primaryKey: true,
+					type: Sequelize.INTEGER,
+				},
+				name: {
+					type: Sequelize.STRING,
+					allowNull: false,
+				},
+				description: {
+					type: Sequelize.STRING,
+				},
+				imageUrl: {
+					type: Sequelize.STRING,
+				},
+				createdAt: {
+					allowNull: false,
+					type: Sequelize.DATE,
+				},
+				updatedAt: {
+					allowNull: false,
+					type: Sequelize.DATE,
+				},
 			},
-			name: {
-				type: Sequelize.STRING,
-				allowNull: false,
-			},
-			description: {
-				type: Sequelize.STRING,
-			},
-			imageUrl: {
-				type: Sequelize.STRING,
-			},
-			createdAt: {
-				allowNull: false,
-				type: Sequelize.DATE,
-			},
-			updatedAt: {
-				allowNull: false,
-				type: Sequelize.DATE,
-			},
-		});
+			options
+		);
 	},
 	async down(queryInterface, Sequelize) {
 		options.tableName = "Games";

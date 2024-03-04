@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === "production") {
 module.exports = {
 	async up(queryInterface, Sequelize) {
 		await queryInterface.createTable(
-			"Games",
+			"CartItems",
 			{
 				id: {
 					allowNull: false,
@@ -15,20 +15,19 @@ module.exports = {
 					primaryKey: true,
 					type: Sequelize.INTEGER,
 				},
-				name: {
-					type: Sequelize.STRING,
+				cartId: {
+					type: Sequelize.INTEGER,
+				},
+				gameId: {
+					type: Sequelize.INTEGER,
 					allowNull: false,
+					references: {
+						model: "Games",
+						key: "id",
+					},
 				},
-				description: {
-					type: Sequelize.STRING,
-				},
-				imageUrl: {
-					type: Sequelize.STRING,
-				},
-				price: {
-					type: Sequelize.DECIMAL(10, 2), // Add the price attribute
-					allowNull: false,
-					defaultValue: 0,
+				quantity: {
+					type: Sequelize.INTEGER,
 				},
 				createdAt: {
 					allowNull: false,
@@ -43,7 +42,7 @@ module.exports = {
 		);
 	},
 	async down(queryInterface, Sequelize) {
-		options.tableName = "Games";
+		options.tableName = "CartItems";
 		await queryInterface.dropTable(options);
 	},
 };

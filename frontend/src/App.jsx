@@ -4,6 +4,7 @@ import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
+import CartPage from "./components/Cart/CartPage";
 import * as sessionActions from "./store/session";
 import LandingPage from "./components/LandingPage/LandingPage";
 import GamePage from "./components/Games/GamePage";
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
 			{
 				path: "games/:gameId",
 				element: <GamePage />,
+			},
+			{
+				path: "user/cart",
+				element: <CartPage />,
 			},
 		],
 	},

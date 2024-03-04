@@ -1,20 +1,28 @@
 const express = require("express");
-const { fetchGames, fetchGame } = require("../../utils/rawg");
-
+// const { fetchGames, fetchGame } = require("../../utils/rawg");
+const { Game } = require("../../db/models");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-	fetchGames(1).then((games) => {
-		return res.json(games);
-	});
+router.get("/", async (req, res) => {
+	try {
+		const games = await Game.findAll({
+			attributes: ["id", "name", "description", "imageUrl", "price"],
+		});
+
+		res.status(200).json({ Games: games });
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: "Internal Server Error" });
+	}
 });
 
-router.get("/:gameId", (req, res) => {
+router.get("/:gameId", async (req, res) => {
 	try {
 		const gameId = req.params.gameId;
-		fetchGame(gameId).then((game) => {
-			return res.json(game);
+		const game = await Game.findByPk(gameId, {
+			attributes: ["id", "name", "description", "imageUrl", "price"],
 		});
+		res.status(200).json({ Game: game });
 	} catch (error) {
 		res.status(500).json({ message: "game not found" });
 	}

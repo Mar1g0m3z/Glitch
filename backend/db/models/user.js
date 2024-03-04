@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
 				onDelete: "CASCADE",
 				hooks: true,
 			});
+			User.hasOne(models.Cart, {
+				foreignKey: "userId",
+			});
 			// define association here
 		}
 	}

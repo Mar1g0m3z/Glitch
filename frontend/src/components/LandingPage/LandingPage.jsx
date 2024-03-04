@@ -6,7 +6,7 @@ const LandingPage = () => {
 	useEffect(() => {
 		fetch("http://localhost:8000/api/games").then((res) => {
 			res.json().then((parsedRes) => {
-				setGames(parsedRes.results);
+				setGames(parsedRes.Games);
 			});
 		});
 	}, []);
@@ -23,7 +23,7 @@ const LandingPage = () => {
 							to={`/games/${game.id}`}>
 							<li key={game.id}>
 								{game.name}
-								<img src={game.background_image}></img>
+								<img src={game.imageUrl}></img>
 							</li>
 						</NavLink>
 					);

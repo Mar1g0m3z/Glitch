@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === "production") {
 module.exports = {
 	async up(queryInterface, Sequelize) {
 		await queryInterface.createTable(
-			"Games",
+			"Carts",
 			{
 				id: {
 					allowNull: false,
@@ -15,20 +15,13 @@ module.exports = {
 					primaryKey: true,
 					type: Sequelize.INTEGER,
 				},
-				name: {
-					type: Sequelize.STRING,
+				userId: {
+					type: Sequelize.INTEGER,
 					allowNull: false,
-				},
-				description: {
-					type: Sequelize.STRING,
-				},
-				imageUrl: {
-					type: Sequelize.STRING,
-				},
-				price: {
-					type: Sequelize.DECIMAL(10, 2), // Add the price attribute
-					allowNull: false,
-					defaultValue: 0,
+					references: {
+						model: "Users",
+						key: "id",
+					},
 				},
 				createdAt: {
 					allowNull: false,
@@ -43,7 +36,7 @@ module.exports = {
 		);
 	},
 	async down(queryInterface, Sequelize) {
-		options.tableName = "Games";
+		options.tableName = "Carts";
 		await queryInterface.dropTable(options);
 	},
 };

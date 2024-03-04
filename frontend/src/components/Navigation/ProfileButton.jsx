@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
+import { FaUser } from "react-icons/fa";
+import "./ProfileButton.css";
 
 function ProfileButton({ user }) {
 	const dispatch = useDispatch();
@@ -35,16 +37,16 @@ function ProfileButton({ user }) {
 
 	return (
 		<>
-			<button onClick={toggleMenu}>
-				<i className="fas fa-user-circle" />
+			<button
+				className="user-profile-button"
+				onClick={toggleMenu}>
+				<FaUser></FaUser>
 			</button>
 			<ul
 				className={ulClassName}
 				ref={ulRef}>
 				<li>{user.username}</li>
-				<li>
-					{user.firstName} {user.lastName}
-				</li>
+
 				<li>{user.email}</li>
 
 				<li>

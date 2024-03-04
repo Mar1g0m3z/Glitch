@@ -1,0 +1,71 @@
+.landing-page {
+	text-align: center;
+	background-color: #1b2838; /* Dark Slate */
+	color: #c5c5c5; /* Metallic Silver for general text */
+}
+
+.carousel-container,
+.game-card {
+	border: 1px solid #2a475e; /* Slate Gray for borders */
+	background-color: #2a475e; /* Slate Gray for card and carousel backgrounds */
+}
+
+.carousel-container {
+	margin: 20px 0;
+	display: flex;
+	justify-content: center;
+}
+.game-name {
+	display: flex;
+	flex-direction: column;
+}
+.carousel-button {
+	background-color: #00adee; /* Electric Blue for buttons */
+	color: #1b2838; /* Dark Slate for button text */
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+}
+NavLink,
+.game-card a {
+	color: #00adee; /* Electric Blue for links */
+	text-decoration: none;
+}
+
+.game-card a:hover {
+	color: #0090c1; /* A slightly darker shade of Electric Blue for hover effect */
+}
+.carousel-button:hover {
+	background-color: #0090c1; /* A slightly darker shade of Electric Blue for hover effect */
+}
+.game-card {
+	margin: 10px;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow for depth */
+	display: flex;
+	align-items: center;
+	border-radius: 5px;
+	width: calc(25% - 20px);
+	box-sizing: border-box;
+}
+
+.game-card img {
+	width: 100%;
+	height: 100px;
+	border-radius: 3px;
+	box-sizing: border-box;
+}
+
+.game-cards-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.game-pic {
+	height: 300px;
+	width: 600px;
+}

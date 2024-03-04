@@ -3,10 +3,15 @@ import {
 	getCart,
 	editCartItem,
 	deleteCartItem,
-} from "../../services/cart-service"; // Adjust the import path as needed
+} from "../../services/cart-service";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
 	const [cart, setCart] = useState({ items: [], totalPrice: 0 });
+	const navigate = useNavigate();
+	const continueShopping = () => {
+		navigate("/"); // Redirects user to the homepage
+	};
 
 	useEffect(() => {
 		fetchCart();
@@ -68,6 +73,7 @@ const CartPage = () => {
 				</ul>
 			)}
 			<p>Total Price: ${cart.totalPrice}</p>
+			<button onClick={continueShopping}>Continue Shopping</button>
 		</div>
 	);
 };

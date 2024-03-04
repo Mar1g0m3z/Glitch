@@ -8,6 +8,7 @@ import { addItemToCart } from "../../services/cart-service";
 import DeleteReviewModal from "../Reviews/DeleteReviewModal";
 import { getReviews, deleteReview } from "../../services/review-service";
 import EditReviewModal from "../Reviews/EditReviewModal";
+import "./GamePage.css";
 const GamePage = () => {
 	const navigate = useNavigate(); // Initialize useNavigate
 	const user = useSelector((state) => state.session.user);
@@ -70,54 +71,65 @@ const GamePage = () => {
 
 	return (
 		<>
-			<div>GamePage!!!!HELP</div>
-			<h1>{game.name}</h1>
-			<h2 dangerouslySetInnerHTML={{ __html: game.description }}></h2>
-			<ul>
-				{reviews.map((review) => (
-					<li
-						key={
-							review.id
-						}>{`${review.User.username}: ${review.content} ${review.rating}`}</li>
-				))}
-			</ul>
-
-			{user && <button onClick={handleAddToCart}>Add to Cart</button>}
-			{user && !userReview ? (
-				<OpenModalButton
-					buttonText="Write Your Review"
-					modalComponent={
-						<CreateReviewModal
-							game={game}
-							afterSubmit={refreshReviews}
+			<div className="game-content">
+				<div className="game-info">
+					<h1>{game.name}</h1>
+					<img
+						src={game.imageUrl}
+						alt={game.name}
+					/>
+					{user && <button onClick={handleAddToCart}>Add to Cart</button>}
+					{user && !userReview ? (
+						<OpenModalButton
+							buttonText="Write Your Review"
+							modalComponent={
+								<CreateReviewModal
+									game={game}
+									afterSubmit={refreshReviews}
+								/>
+							}
 						/>
-					}
-				/>
-			) : null}
-			{userReview ? (
-				<>
-					<OpenModalButton
-						buttonText="Edit Review"
-						modalComponent={
-							<EditReviewModal
-								reviewId={userReview.id}
-								initialContent={userReview.content}
-								initialRating={userReview.rating}
-								onUpdate={handleUpdateReview}
-							/>
-						}
-					/>
-					<OpenModalButton
-						buttonText="Delete Review"
-						modalComponent={
-							<DeleteReviewModal
-								reviewId={userReview.id}
-								onDelete={handleDeleteReview}
-							/>
-						}
-					/>
-				</>
-			) : null}
+					) : null}
+					<p dangerouslySetInnerHTML={{ __html: game.description }}></p>
+				</div>
+				<div className="review-section">
+					<h2>Reviews</h2>
+					<ul>
+						{reviews.map((review) => (
+							<li
+								key={
+									review.id
+								}>{`${review.User.username}: ${review.content} ${review.rating}`}</li>
+						))}
+					</ul>
+					{userReview ? (
+						<>
+							<div className="review-buttons">
+								<OpenModalButton
+									buttonText="Edit Review"
+									modalComponent={
+										<EditReviewModal
+											reviewId={userReview.id}
+											initialContent={userReview.content}
+											initialRating={userReview.rating}
+											onUpdate={handleUpdateReview}
+										/>
+									}
+								/>
+								<OpenModalButton
+									buttonText="Delete Review"
+									modalComponent={
+										<DeleteReviewModal
+											reviewId={userReview.id}
+											onDelete={handleDeleteReview}
+										/>
+									}
+								/>
+							</div>
+						</>
+					) : null}
+				</div>
+			</div>
 		</>
 	);
 };

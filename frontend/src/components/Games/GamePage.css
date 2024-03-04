@@ -1,0 +1,24 @@
+.game-info {
+	width: 500px;
+	height: 250px;
+	display: flex;
+	justify-content: space-between; /* This will place the image and paragraph on opposite ends */
+	align-items: center;
+	flex-direction: column;
+}
+
+.game-info img {
+	width: 500px;
+	height: 250px;
+}
+
+.game-info p {
+	flex: 1;
+	margin: 0 10px; /*Add some margin around your paragraph for spacing */
+	/* overflow: auto; */
+}
+
+.game-content {
+	display: flex;
+	justify-content: space-evenly;
+}

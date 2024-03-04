@@ -13,8 +13,8 @@ function LoginFormModal() {
 	const buttonEnable = credential.length >= 4 && password.length >= 6;
 	const loginDemoUser = () => {
 		setErrors({});
-		const demoCredential = "PrincessZelda";
-		const demoPassWord = "Triforce123";
+		const demoCredential = "demo@user.io";
+		const demoPassWord = "password";
 		return dispatch(
 			sessionActions.login({
 				credential: demoCredential,

@@ -4,40 +4,44 @@ import ProfileButton from "./ProfileButton";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import CartButton from "../Cart/CartButton";
+import "./Navigation.css";
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector((state) => state.session.user);
 
 	const sessionLinks = sessionUser ? (
 		<div className="profile-menu">
-			<CartButton user={sessionUser}></CartButton>
 			<ProfileButton user={sessionUser} />
-			<ul className="profile-dropdown">{/* Dropdown items here */}</ul>
 		</div>
 	) : (
 		<>
-			<li className="log-in-but">
-				<OpenModalButton
-					buttonText="Log In"
-					modalComponent={<LoginFormModal />}
-				/>
-			</li>
-			<li className="sign-up-but">
-				<OpenModalButton
-					buttonText="Sign Up"
-					modalComponent={<SignupFormModal />}
-				/>
-			</li>
+			<ul className="user-buttons">
+				<li className="log-in-but">
+					<OpenModalButton
+						buttonText="Log In"
+						modalComponent={<LoginFormModal />}
+					/>
+				</li>
+				<li className="sign-up-but">
+					<OpenModalButton
+						buttonText="Sign Up"
+						modalComponent={<SignupFormModal />}
+					/>
+				</li>
+			</ul>
 		</>
 	);
 
 	return (
 		<>
-			<ul>
-				<li>
-					<NavLink to="/">Home</NavLink>
+			<ul className="nav-bar">
+				<li className="logo">
+					<NavLink to="/">
+						<img
+							src="../glitch-logo.png"
+							alt="Glitch GIF"></img>
+					</NavLink>
 				</li>
-				{isLoaded && sessionLinks}
+				{isLoaded && <li className="user-profile">{sessionLinks}</li>}
 			</ul>
 		</>
 	);

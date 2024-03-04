@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
+
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useNavigate } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
+import "./ProfileButton.css";
 
 function ProfileButton({ user }) {
 	const navigate = useNavigate();
@@ -49,22 +51,16 @@ function ProfileButton({ user }) {
 				<button
 					className="profile-button"
 					onClick={toggleMenu}>
-					<i className="fas fa-user-circle fa-2xl" />
+					<FaUser></FaUser>
 				</button>
 				<ul
 					className={ulClassName}
 					ref={ulRef}>
 					{user ? (
 						<>
-							<li className="user-name">Hello, {user.firstName}</li>
+							<li className="user-name">Hello, {user.username}</li>
 							<li className="user-email">{user.email}</li>
-							<li>
-								<NavLink
-									className="manage-spots"
-									to="/spots/current">
-									Manage Spots
-								</NavLink>
-							</li>
+
 							<li>
 								<button
 									className="log-out-button"

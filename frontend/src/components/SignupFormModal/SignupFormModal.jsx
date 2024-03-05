@@ -8,8 +8,7 @@ function SignupFormModal() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
-	const [firstName, setFirstName] = useState("");
-	const [lastName, setLastName] = useState("");
+
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState({});
@@ -28,8 +27,7 @@ function SignupFormModal() {
 				sessionActions.signup({
 					email,
 					username,
-					firstName,
-					lastName,
+
 					password,
 				})
 			)
@@ -73,28 +71,7 @@ function SignupFormModal() {
 					/>
 				</label>
 				{errors.username && <p className="error-messages">{errors.username}</p>}
-				<label>
-					<input
-						type="text"
-						value={firstName}
-						placeholder="First Name"
-						onChange={(e) => setFirstName(e.target.value)}
-						required
-					/>
-				</label>
-				{errors.firstName && (
-					<p className="error-messages">{errors.firstName}</p>
-				)}
-				<label>
-					<input
-						type="text"
-						value={lastName}
-						placeholder="Last Name"
-						onChange={(e) => setLastName(e.target.value)}
-						required
-					/>
-				</label>
-				{errors.lastName && <p className="error-messages">{errors.lastName}</p>}
+
 				<label>
 					<input
 						type="password"

@@ -10,7 +10,8 @@ function LoginFormModal() {
 	const [errors, setErrors] = useState({});
 	const { closeModal } = useModal();
 
-	const buttonEnable = credential.length >= 4 && password.length >= 6;
+	// const buttonEnable = credential.length >= 4 && password.length >= 6;
+
 	const loginDemoUser = () => {
 		setErrors({});
 		const demoCredential = "demo@user.io";
@@ -32,6 +33,18 @@ function LoginFormModal() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setErrors({});
+		let newErrors = {};
+		if (!credential) {
+			newErrors.username = "Please provide a valid username/email.";
+		}
+		if (!password) {
+			newErrors.password = "Please provide a valid password.";
+			if (Object.keys(newErrors).length > 0) {
+				setErrors(newErrors);
+				return;
+			}
+		}
+
 		return dispatch(sessionActions.login({ credential, password }))
 			.then(closeModal)
 			.catch(async (res) => {
@@ -57,7 +70,11 @@ function LoginFormModal() {
 						onChange={(e) => setCredential(e.target.value)}
 						required
 					/>
+					{errors.username && (
+						<p className="error-message">{errors.username}</p>
+					)}
 				</label>
+
 				<label>
 					<input
 						className="pass"
@@ -67,12 +84,17 @@ function LoginFormModal() {
 						onChange={(e) => setPassword(e.target.value)}
 						required
 					/>
+					{errors.password && (
+						<p className="error-message">{errors.password}</p>
+					)}
+					{errors.credential && (
+						<p className="error-message">{errors.credential}</p>
+					)}
 				</label>
-				{errors.message && <p>{errors.message}</p>}
+
 				<button
 					className="submit"
-					type="submit"
-					disabled={!buttonEnable}>
+					type="submit">
 					Log In
 				</button>
 

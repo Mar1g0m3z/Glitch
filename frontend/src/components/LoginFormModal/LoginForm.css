@@ -1,3 +1,63 @@
-.body {
-	background-color: black;
+/* LoginForm.css */
+.login-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px; /* Adjust the space between form elements */
+	background-color: #f2f2f2; /* Light grey background */
+	padding: 20px; /* Padding around the form content */
+	border-radius: 8px; /* Rounded corners for the form */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+	width: 100%; /* Full width or adjust as needed */
+	max-width: 400px; /* Maximum form width */
+	margin: auto; /* Center the form horizontally */
+}
+
+.login-form input {
+	padding: 8px 12px; /* Padding inside the input fields */
+	border: 1px solid #ccc; /* Light grey border */
+	border-radius: 4px; /* Rounded corners for inputs */
+	font-size: 16px; /* Text size */
+}
+
+.login-form input.creden,
+.login-form input.pass {
+	margin-bottom: 10px; /* Space below input fields */
+}
+
+.login-form button {
+	padding: 10px 15px; /* Button padding */
+	border: none; /* No border */
+	border-radius: 4px; /* Rounded corners for buttons */
+	cursor: pointer; /* Pointer cursor on hover */
+	font-size: 16px; /* Button text size */
+	transition: background-color 0.2s; /* Smooth background color transition */
+}
+
+.login-form button.submit {
+	background-color: #007bff; /* Bootstrap primary color */
+	color: white; /* White text */
+}
+
+.login-form button.submit:hover {
+	background-color: #0056b3; /* Darker blue on hover */
+}
+
+.login-form button.demo-user {
+	background-color: #28a745; /* Bootstrap success color */
+	color: white; /* White text */
+}
+
+.login-form button.demo-user:hover {
+	background-color: #1e7e34; /* Darker green on hover */
+}
+
+/* Error message styles */
+.login-form p {
+	color: #dc3545; /* Bootstrap danger color */
+	background-color: #f8d7da; /* Light pink background */
+	border: 1px solid #f5c2c7; /* Light red border */
+	padding: 10px; /* Padding */
+	border-radius: 4px; /* Rounded corners */
+	margin-top: -10px; /* Adjust as needed */
+	margin-bottom: 10px; /* Space below the error message */
 }

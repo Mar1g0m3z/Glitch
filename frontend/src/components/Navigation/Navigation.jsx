@@ -18,6 +18,7 @@ function Navigation({ isLoaded }) {
 			if (sessionUser) {
 				try {
 					const cartData = await getCart();
+					// console.log(cartData);
 					const itemCount = cartData.items.reduce(
 						(total, item) => total + item.quantity,
 						0

@@ -8,6 +8,7 @@ import { addItemToCart } from "../../services/cart-service";
 import DeleteReviewModal from "../Reviews/DeleteReviewModal";
 import { getReviews, deleteReview } from "../../services/review-service";
 import EditReviewModal from "../Reviews/EditReviewModal";
+import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import "./GamePage.css";
 const GamePage = () => {
 	const navigate = useNavigate(); // Initialize useNavigate
@@ -94,12 +95,12 @@ const GamePage = () => {
 				</div>
 				<div className="review-section">
 					<h2>Reviews</h2>
-					<ul>
+					<ul className="review-list">
 						{reviews.map((review) => (
-							<li
-								key={
-									review.id
-								}>{`${review.User.username}: ${review.content} ${review.rating}`}</li>
+							<li key={review.id}>
+								{review.User.username}: {review.content}{" "}
+								{review.rating ? <FaThumbsUp /> : <FaThumbsDown />}
+							</li>
 						))}
 					</ul>
 					{userReview ? (

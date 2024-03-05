@@ -5,6 +5,7 @@ import {
 	deleteCartItem,
 } from "../../services/cart-service";
 import { useNavigate } from "react-router-dom";
+import "./CartPage.css";
 
 const CartPage = () => {
 	const [cart, setCart] = useState({ items: [], totalPrice: 0 });
@@ -48,32 +49,40 @@ const CartPage = () => {
 	};
 	return (
 		<div>
-			<h2>My Cart</h2>
-			{cart.items.length === 0 ? (
-				<p>Your cart is empty.</p>
-			) : (
-				<ul>
-					{cart.items.map((item) => (
-						<li key={item.id}>
-							{item.game.name} - ${item.game.price} x {item.quantity}
-							<button
-								onClick={() => handleEditItem(item.id, item.quantity + 1)}>
-								+
-							</button>
-							<button
-								onClick={() =>
-									handleEditItem(item.id, Math.max(1, item.quantity - 1))
-								}>
-								-
-							</button>
-							<button onClick={() => handleDeleteItem(item.id)}>Remove</button>
-							{/* Buttons for editing and deleting items */}
-						</li>
-					))}
-				</ul>
-			)}
-			<p>Total Price: ${cart.totalPrice}</p>
-			<button onClick={continueShopping}>Continue Shopping</button>
+			<div className="cart-box">
+				<h2>My Cart</h2>
+				{cart.items.length === 0 ? (
+					<p>Your cart is empty.</p>
+				) : (
+					<ul className="cart-items">
+						{cart.items.map((item) => (
+							<li key={item.id}>
+								{item.game.name} - ${item.game.price} x {item.quantity}
+								<button
+									onClick={() => handleEditItem(item.id, item.quantity + 1)}>
+									+
+								</button>
+								<button
+									onClick={() =>
+										handleEditItem(item.id, Math.max(1, item.quantity - 1))
+									}>
+									-
+								</button>
+								<button onClick={() => handleDeleteItem(item.id)}>
+									Remove
+								</button>
+								{/* Buttons for editing and deleting items */}
+							</li>
+						))}
+					</ul>
+				)}
+				<p>Total Price: ${cart.totalPrice}</p>
+				<button
+					className="keep-shopping"
+					onClick={continueShopping}>
+					Continue Shopping
+				</button>
+			</div>
 		</div>
 	);
 };

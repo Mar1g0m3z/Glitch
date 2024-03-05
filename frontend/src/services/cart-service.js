@@ -27,6 +27,7 @@ export async function addItemToCart({ gameId, quantity }) {
 	});
 	if (response.ok) {
 		const data = await response.json();
+		window.dispatchEvent(new CustomEvent("cartUpdated"));
 		return data;
 	} else {
 		throw new Error("Failed to add item to cart.");
@@ -46,6 +47,7 @@ export async function editCartItem(itemId, { quantity }) {
 	});
 	if (response.ok) {
 		const data = await response.json();
+		window.dispatchEvent(new CustomEvent("cartUpdated"));
 		return data;
 	} else {
 		throw new Error("Failed to update item in cart.");
@@ -58,6 +60,7 @@ export async function deleteCartItem(itemId) {
 		method: "DELETE",
 	});
 	if (response.ok) {
+		window.dispatchEvent(new CustomEvent("cartUpdated"));
 		return true;
 	} else {
 		throw new Error("Failed to delete item from cart.");

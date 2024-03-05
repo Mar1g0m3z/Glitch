@@ -1,0 +1,110 @@
+ul.cart-items {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+.cart-box {
+	width: 80%;
+	margin: 20px auto;
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	padding: 20px;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-items {
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 20px;
+}
+
+.cart-items li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+	background-color: #fff;
+	padding: 10px;
+	border-radius: 4px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cart-items li:not(:last-child) {
+	border-bottom: 1px solid #e1e1e1;
+}
+
+.cart-items button {
+	background-color: #1b2838;
+	color: #fff;
+	border: none;
+	padding: 6px 12px;
+	margin-left: 5px;
+	border-radius: 2px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.cart-items button:hover {
+	background-color: #171a21;
+}
+
+.cart-items button:active {
+	transform: scale(0.98);
+}
+
+h2 {
+	color: #171a21;
+}
+
+p {
+	color: #666;
+}
+
+/* Style for the total price section */
+.total-price {
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-top: 20px;
+	text-align: right;
+}
+
+/* Continue Shopping button at the bottom */
+button.continue-shopping {
+	background-color: #5c7e10;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.keep-shopping {
+	background-color: #5c7e10; /* Steam's green color */
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 2px;
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+	outline: none;
+	transition: background-color 0.2s, transform 0.1s;
+	text-align: center;
+	display: inline-block;
+	margin: 10px 0;
+	text-decoration: none; /* In case you use an <a> tag */
+}
+
+.keep-shopping:hover {
+	background-color: #4b5c07; /* A darker green */
+	text-decoration: none; /* In case you use an <a> tag */
+	transform: translateY(-2px); /* Slight lift */
+}
+
+.keep-shopping:active {
+	background-color: #404e07; /* Even darker for the click effect */
+	transform: translateY(1px); /* Push down */
+}

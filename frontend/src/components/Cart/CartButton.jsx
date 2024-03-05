@@ -2,8 +2,8 @@
 
 import { useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
-
-const CartButton = () => {
+import "./CartButton.css";
+const CartButton = ({ itemCount = 0 }) => {
 	let navigate = useNavigate();
 
 	const goToCart = () => {
@@ -12,7 +12,8 @@ const CartButton = () => {
 
 	return (
 		<button onClick={goToCart}>
-			<FaShoppingCart></FaShoppingCart>
+			<FaShoppingCart />
+			{itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
 		</button>
 	);
 };

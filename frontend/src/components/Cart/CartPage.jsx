@@ -5,6 +5,7 @@ import {
 	deleteCartItem,
 } from "../../services/cart-service";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./CartPage.css";
 
 const CartPage = () => {
@@ -14,9 +15,16 @@ const CartPage = () => {
 		navigate("/"); // Redirects user to the homepage
 	};
 
+	const sessionUser = useSelector((state) => state.session.user); // Example selector, adjust based on your state shape
+
 	useEffect(() => {
-		fetchCart();
-	}, []); // Dependency array left empty to fetch cart on mount
+		// Check if there's a logged-in user
+		if (!sessionUser) {
+			navigate("/"); // Redirect to home if no user is logged in
+		} else {
+			fetchCart();
+		}
+	}, [sessionUser, navigate]);
 
 	const fetchCart = async () => {
 		try {

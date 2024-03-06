@@ -83,13 +83,6 @@ a:active {
 	transition: background-color 0.3s ease;
 }
 
-.carousel-button:hover {
-	background-color: darken(
-		var(--primary-color),
-		10%
-	); /* You'll need to manually adjust this value */
-}
-
 NavLink,
 .game-card a {
 	color: var(--accent-color); /* Warm amber for links */

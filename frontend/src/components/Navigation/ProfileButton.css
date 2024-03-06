@@ -4,7 +4,7 @@
 
 ul.profile-dropdown li {
 	padding: 8px 12px;
-	cursor: pointer;
+
 	transition: background-color 0.2s;
 }
 
@@ -12,10 +12,20 @@ ul.profile-dropdown {
 	display: flex;
 	flex-direction: column;
 	position: absolute;
-	background-color: gray;
+	color: #1a1b1f;
+	background-color: white;
 	margin: 0 -60px;
+	font-weight: bolder;
+	border-radius: 5px;
+	border: solid 2px #1a1b1f;
+	box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+	font-family: "Urbanist", sans-serif;
 }
 
 ul.profile-dropdown.hidden {
 	visibility: hidden;
+}
+
+.log-off {
+	background-color: #daa520;
 }

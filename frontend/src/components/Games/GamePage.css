@@ -1,42 +1,166 @@
-.game-info {
-	width: 500px;
-	height: 250px;
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@100;400;600&display=swap");
+
+:root {
+	--background-dark: #1a1b1f;
+	--text-color-light: rgba(255, 255, 255, 0.8);
+	--text-color-dim: rgba(255, 255, 255, 0.5);
+	--border-color: rgba(255, 255, 255, 0.1);
+	--box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+	--font-family: "Urbanist", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #8287a0;
+	font-family: var(--font-family);
+	color: var(--text-color-light);
 	display: flex;
-	justify-content: space-between; /* This will place the image and paragraph on opposite ends */
-	align-items: center;
 	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	width: 100vw;
+	overflow-x: hidden;
+}
+
+.container {
+	display: flex;
+	width: 90%;
+	max-width: 1400px;
+	height: 90%;
+	min-height: 700px;
+	max-height: 750px;
+	background-color: var(--background-dark);
+	border-radius: 20px;
+	box-shadow: var(--box-shadow);
+	overflow: hidden;
+}
+
+.game-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	width: 500px;
+	min-height: 250px;
+	margin: 20px;
+	padding: 20px;
+	box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	background-color: var(--background-dark);
+	color: var(--text-color-light);
 }
 
 .game-info img {
-	width: 500px;
-	height: 250px;
+	width: 100%;
+	max-width: 500px;
+	height: auto;
+	object-fit: cover;
+	border-radius: 10px;
 }
 
 .game-info p {
+	margin: 10px;
 	flex: 1;
-	margin: 0 10px; /*Add some margin around your paragraph for spacing */
-	/* overflow: auto; */
+	color: var(--text-color-dim);
 }
 
-.game-content {
-	display: flex;
-	justify-content: space-evenly;
-}
+.game-content,
 .review-list {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
-	color: white;
+	align-items: center;
 	gap: 10px;
 }
 
-.review-section h2 {
-	text-align: center;
-	margin: 0;
-}
 .review-section {
-	margin-top: 80px;
-	box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-	height: 250px;
-	width: 500px;
+	margin-top: 20px;
+	box-shadow: var(--box-shadow);
+	padding: 20px;
+	border-radius: 10px;
+	background-color: var(--background-dark);
+	color: var(--text-color-light);
+	width: 90%;
+	max-width: 500px;
+}
+
+.review-section h2 {
+	color: #d1d1d2;
+}
+
+button {
+	padding: 12px 24px;
+	border-radius: 8px;
+	border: none;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.2s;
+	display: inline-block;
+	color: #fff;
+	background-color: #5c7e0f;
+	text-decoration: none;
+	margin: 5px; /* Adds a little space between buttons if they are adjacent */
+}
+
+.button:hover,
+.open-modal-button:hover {
+	background-color: darken(var(--primary-color), 10%);
+	transform: translateY(-2px); /* Slightly raise the button */
+}
+
+/* Add to Cart Button */
+.add-to-cart {
+	background-color: var(
+		--primary-color
+	); /* Primary action, make it stand out */
+}
+
+.add-to-cart:hover {
+	background-color: darken(var(--primary-color), 15%);
+}
+
+/* Write Review Button */
+.write-review {
+	background-color: #4caf50; /* Green, indicating a positive action */
+}
+
+.write-review:hover {
+	background-color: darken(#4caf50, 15%);
+}
+
+/* Edit Review Button */
+.edit-review {
+	background-color: #ffc107; /* Amber, indicating an option to modify */
+}
+
+.edit-review:hover {
+	background-color: darken(#ffc107, 15%);
+}
+
+/* Delete Review Button */
+.delete-review {
+	background-color: #f44336; /* Red, warning color indicating deletion or removal */
+}
+
+.delete-review:hover {
+	background-color: darken(#f44336, 15%);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+	.game-info,
+	.review-section {
+		width: 80%;
+	}
+
+	.game-info img {
+		max-width: 100%;
+	}
 }

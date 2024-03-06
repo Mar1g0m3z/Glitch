@@ -28,7 +28,7 @@ ul.nav-bar {
 NavLink,
 .log-in-but button,
 .sign-up-but button {
-	color: #66c0f4; /* Electric Blue for text */
+	color: white;
 	text-decoration: none;
 	padding: 10px 15px;
 	transition: color 0.2s ease-in-out;

@@ -1,63 +1,71 @@
-/* LoginForm.css */
 .login-form {
 	display: flex;
 	flex-direction: column;
-	gap: 10px; /* Adjust the space between form elements */
-	background-color: #f2f2f2; /* Light grey background */
-	padding: 20px; /* Padding around the form content */
-	border-radius: 8px; /* Rounded corners for the form */
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-	width: 100%; /* Full width or adjust as needed */
-	max-width: 400px; /* Maximum form width */
-	margin: auto; /* Center the form horizontally */
+	gap: 10px;
+	background-color: var(--background-dark); /* Dark theme background */
+	padding: 20px;
+	border-radius: 8px;
+	/* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); Adjusted for better visibility */
+	width: 100%;
+	max-width: 400px;
+	margin: auto;
+	color: var(--text-color-light); /* Text color for dark theme */
 }
 
 .login-form input {
-	padding: 8px 12px; /* Padding inside the input fields */
-	border: 1px solid #ccc; /* Light grey border */
-	border-radius: 4px; /* Rounded corners for inputs */
-	font-size: 16px; /* Text size */
+	padding: 12px;
+	border: 1px solid var(--border-color); /* Adjusted border color */
+	/* Slightly lighter dark shade for input */
+	width: 100%;
+	border-radius: 4px;
+	font-size: 16px;
+	/* padding-left: 0px; Aligns text and placeholder to start */
 }
 
 .login-form input.creden,
 .login-form input.pass {
-	margin-bottom: 10px; /* Space below input fields */
+	margin-bottom: 10px;
 }
 
 .login-form button {
-	padding: 10px 15px; /* Button padding */
-	border: none; /* No border */
-	border-radius: 4px; /* Rounded corners for buttons */
-	cursor: pointer; /* Pointer cursor on hover */
-	font-size: 16px; /* Button text size */
-	transition: background-color 0.2s; /* Smooth background color transition */
+	padding: 10px 15px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.2s;
+	color: white; /* Ensuring text is white for visibility */
 }
 
 .login-form button.submit {
-	background-color: #007bff; /* Bootstrap primary color */
-	color: white; /* White text */
+	background-color: var(--primary-color); /* Primary color for submit */
 }
 
 .login-form button.submit:hover {
-	background-color: #0056b3; /* Darker blue on hover */
+	background-color: darken(
+		var(--primary-color),
+		10%
+	); /* Darker shade for hover */
 }
 
 .login-form button.demo-user {
-	background-color: #28a745; /* Bootstrap success color */
-	color: white; /* White text */
+	background-color: var(--accent-color); /* Accent color for demo user */
 }
 
 .login-form button.demo-user:hover {
-	background-color: #1e7e34; /* Darker green on hover */
+	background-color: darken(
+		var(--accent-color),
+		10%
+	); /* Darker shade for hover */
 }
 
-/* Error message styles */
+/* Error message styles adjusted for dark theme */
 .login-form p {
-	color: #dc3545; /* Bootstrap danger color */
-	background-color: #f8d7da; /* Light pink background */
-	border: 1px solid #f5c2c7; /* Light red border */
-	padding: 10px; /* Padding */
-	border-radius: 4px; /* Rounded corners */
-	margin-top: -10px; /* Adjust as needed */
-	margin-bottom: 10px; /* Space below the error message */
+	color: var(--error-color); /* Error text color */
+	background-color: #412528; /* Darker shade for error background */
+	border: 1px solid #5c2d2e; /* Adjusted for dark theme */
+	padding: 10px;
+	border-radius: 4px;
+	margin-top: -10px;
+	margin-bottom: 10px;
 }

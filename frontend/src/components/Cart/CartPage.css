@@ -82,6 +82,33 @@ button.continue-shopping {
 	transition: background-color 0.2s ease;
 }
 
+button.checkout {
+	background-color: #daa520;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 2px;
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+	outline: none;
+	transition: background-color 0.2s, transform 0.1s;
+	text-align: center;
+	display: inline-block;
+	margin: 10px 0;
+	text-decoration: none;
+	margin-right: 10px;
+}
+.checkout:hover {
+	background-color: #9e6c08; /* A darker green */
+	text-decoration: none; /* In case you use an <a> tag */
+	transform: translateY(-2px);
+}
+.checkout:active {
+	transform: translateY(1px);
+	background-color: #9e6c08;
+}
 .keep-shopping {
 	background-color: #5c7e10; /* Steam's green color */
 	color: white;
@@ -109,4 +136,9 @@ button.continue-shopping {
 .keep-shopping:active {
 	background-color: #404e07; /* Even darker for the click effect */
 	transform: translateY(1px); /* Push down */
+}
+
+.error-message {
+	color: #dc3545; /* Red color for errors */
+	margin-top: 10px; /* Spacing above the error message */
 }

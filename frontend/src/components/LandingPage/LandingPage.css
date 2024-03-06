@@ -16,8 +16,6 @@
 }
 
 body {
-	margin: 0;
-	padding: 0;
 	background-color: #8287a0;
 	font-family: var(--font-family);
 	color: var(--text-color-light);

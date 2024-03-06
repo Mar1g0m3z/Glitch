@@ -9,7 +9,9 @@ import { useSelector } from "react-redux";
 import "./CartPage.css";
 
 const CartPage = () => {
+	const [showError, setShowError] = useState(false);
 	const [cart, setCart] = useState({ items: [], totalPrice: 0 });
+	const [checkoutCompleted, setCheckoutCompleted] = useState(false);
 	const navigate = useNavigate();
 	const continueShopping = () => {
 		navigate("/"); // Redirects user to the homepage
@@ -55,11 +57,43 @@ const CartPage = () => {
 			console.error("Failed to delete item:", error);
 		}
 	};
+
+	const handleCheckout = async () => {
+		if (cart.items.length === 0) {
+			setShowError(true); // Show error message if cart is empty
+			// Optionally clear the error message after a delay
+			setTimeout(() => setShowError(false), 3000);
+			return;
+		}
+		try {
+			// Assuming editCartItem and deleteCartItem can modify the backend
+			// Iterate over all items in the cart and delete them using deleteCartItem
+			for (const item of cart.items) {
+				await deleteCartItem(item.id);
+			}
+			// After all items are deleted, reset the cart state
+			setCart({ items: [], totalPrice: 0 });
+			// Set checkoutCompleted to true to show any post-checkout message if you plan to use it
+			setCheckoutCompleted(true);
+		} catch (error) {
+			console.error("Failed to clear the cart:", error);
+		}
+	};
+
+	const viewLibraryAlert = () => {
+		alert("Feature coming soon!");
+		setCheckoutCompleted(false);
+	};
 	return (
 		<div>
 			<div className="cart-box">
 				<h2>My Cart</h2>
-				{cart.items.length === 0 ? (
+				{checkoutCompleted ? (
+					<>
+						<p>Thank you for your purchase!</p>
+						<button onClick={viewLibraryAlert}>View Your Library</button>
+					</>
+				) : cart.items.length === 0 ? (
 					<p>Your cart is empty.</p>
 				) : (
 					<ul className="cart-items">
@@ -85,6 +119,14 @@ const CartPage = () => {
 					</ul>
 				)}
 				<p>Total Price: ${cart.totalPrice}</p>
+				{showError && <p className="error-message">No items to purchase.</p>}
+				{!checkoutCompleted && (
+					<button
+						className="checkout"
+						onClick={handleCheckout}>
+						Checkout
+					</button>
+				)}
 				<button
 					className="keep-shopping"
 					onClick={continueShopping}>

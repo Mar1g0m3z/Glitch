@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-
+import "./LandingPage.css";
 const LandingPage = () => {
 	const [games, setGames] = useState([]);
 	const [currentIndex, setCurrentIndex] = useState(0);

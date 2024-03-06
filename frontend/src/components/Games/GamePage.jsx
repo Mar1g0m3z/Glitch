@@ -13,11 +13,14 @@ import "./GamePage.css";
 const GamePage = () => {
 	const navigate = useNavigate(); // Initialize useNavigate
 	const user = useSelector((state) => state.session.user);
-
 	const [reviews, setReviews] = useState([]);
 	const [game, setGame] = useState({});
 	const [userReview, setUserReview] = useState(null);
 	const { gameId } = useParams();
+	const baseURL =
+		window.location.hostname === "localhost"
+			? `http://localhost:8000/api/games/${gameId}`
+			: `https://glitch-3989.onrender.com/api/games/${gameId}`;
 
 	const refreshReviews = useCallback(() => {
 		getReviews(gameId)
@@ -29,14 +32,14 @@ const GamePage = () => {
 	}, [gameId]);
 
 	useEffect(() => {
-		fetch(`http://localhost:8000/api/games/${gameId}`)
+		fetch(baseURL)
 			.then((res) => res.json())
 			.then((parsedRes) => {
 				setGame(parsedRes.Game);
 			})
 			.catch((error) => console.error("Error fetching game:", error));
 		refreshReviews();
-	}, [gameId, refreshReviews]);
+	}, [gameId, refreshReviews, baseURL]);
 
 	useEffect(() => {
 		if (user) {

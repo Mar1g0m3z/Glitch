@@ -37,6 +37,7 @@ body {
 	background-color: var(--background-dark);
 	border-radius: 20px;
 	box-shadow: var(--box-shadow);
+
 	overflow: hidden;
 }
 
@@ -51,6 +52,7 @@ body {
 	padding: 20px;
 	box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
+	border: 1px solid #ddd;
 	background-color: var(--background-dark);
 	color: var(--text-color-light);
 }
@@ -69,14 +71,24 @@ body {
 	color: var(--text-color-dim);
 }
 
-.game-content,
-.review-list {
+.game-content {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 10px;
 }
+.review-section h2 {
+	display: flex;
 
+	justify-content: center;
+}
+.review-list li {
+	display: flex;
+	justify-content: flex-start;
+}
+.review-list svg {
+	margin-left: 10px;
+}
 .review-section {
 	margin-top: 20px;
 	box-shadow: var(--box-shadow);
@@ -86,6 +98,7 @@ body {
 	color: var(--text-color-light);
 	width: 90%;
 	max-width: 500px;
+	border: 1px solid #ddd;
 }
 
 .review-section h2 {
@@ -105,7 +118,9 @@ button {
 	text-decoration: none;
 	margin: 5px; /* Adds a little space between buttons if they are adjacent */
 }
-
+.review-buttons > :nth-child(2) {
+	background-color: #ffc107;
+}
 .button:hover,
 .open-modal-button:hover {
 	background-color: darken(var(--primary-color), 10%);
@@ -139,15 +154,6 @@ button {
 
 .edit-review:hover {
 	background-color: darken(#ffc107, 15%);
-}
-
-/* Delete Review Button */
-.delete-review {
-	background-color: #f44336; /* Red, warning color indicating deletion or removal */
-}
-
-.delete-review:hover {
-	background-color: darken(#f44336, 15%);
 }
 
 /* Media Queries for Responsiveness */

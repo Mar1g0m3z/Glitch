@@ -1,0 +1,35 @@
+svg.fa-thumbs-up,
+svg.fa-thumbs-down {
+	cursor: pointer;
+}
+
+svg.fa-thumbs-up:hover {
+	color: #4caf50; /* Green for thumbs up */
+}
+
+svg.fa-thumbs-down:hover {
+	color: #e6b800; /* Red for thumbs down */
+}
+
+.fa-thumbs-down.active {
+	color: #e6b800; /* Change as needed */
+}
+
+.fa-thumbs-up.active {
+	color: #4caf50; /* Change as needed */
+}
+.create-review {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.create-review textarea {
+	width: 300px;
+	height: 150px;
+}
+
+form.submit-review ul {
+	display: flex;
+	justify-content: space-evenly;
+}

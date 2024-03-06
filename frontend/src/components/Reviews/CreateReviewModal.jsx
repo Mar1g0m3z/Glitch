@@ -2,13 +2,13 @@ import { useModal } from "../../context/Modal";
 import { useState } from "react";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { createReview } from "../../services/review-service";
-
+import "./CreateReview.css";
 function CreateReviewModal({ game, afterSubmit }) {
 	const [content, setContent] = useState("");
 	const [rating, setRating] = useState(undefined);
 	const [errors, setErrors] = useState({});
 	const { closeModal } = useModal();
-	const buttonEnable = content.length >= 10 && rating !== undefined;
+	// const buttonEnable = content.length >= 10 && rating !== undefined;
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		createReview({
@@ -30,8 +30,8 @@ function CreateReviewModal({ game, afterSubmit }) {
 		<>
 			<div className="create-review">
 				<h2>Game Review?</h2>
-				{errors?.review}
-				{errors?.stars}
+				<p className="error-message">{errors?.content}</p>
+
 				<form
 					className="submit-review"
 					onSubmit={handleSubmit}>
@@ -40,18 +40,21 @@ function CreateReviewModal({ game, afterSubmit }) {
 						placeholder="leave your review here..."
 						onChange={(e) => setContent(e.target.value)}></textarea>
 					<ul>
-						<li>
-							<FaThumbsUp onClick={() => setRating(true)}></FaThumbsUp>
-						</li>
-						<li>
-							<FaThumbsDown onClick={() => setRating(false)}></FaThumbsDown>
-						</li>
+						<FaThumbsUp
+							className={`fa-thumbs-up ${rating === true ? "active" : ""}`}
+							onClick={() => setRating(true)}
+						/>
+						<FaThumbsDown
+							className={`fa-thumbs-down ${rating === false ? "active" : ""}`}
+							onClick={() => setRating(false)}
+						/>
 					</ul>
+					<p className="error-message">{errors?.rating}</p>
+					<br />
 					{
 						<button
 							className="submit-review-button"
-							type="submit"
-							disabled={!buttonEnable}>
+							type="submit">
 							Submit Your Review
 						</button>
 					}

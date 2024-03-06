@@ -148,3 +148,12 @@ ul.review-list button {
 .reviews button:hover {
 	background-color: #43a047;
 }
+
+.error-message {
+	color: #d8000c;
+	background-color: #ffd2d2;
+	padding: 10px;
+	margin: 10px 0;
+	border: 1px solid #d8000c;
+	border-radius: 5px;
+}

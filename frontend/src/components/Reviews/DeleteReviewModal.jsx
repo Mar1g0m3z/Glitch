@@ -1,5 +1,5 @@
 import { useModal } from "../../context/Modal";
-
+import "./DeleteReview.css";
 function DeleteReviewModal({ reviewId, onDelete }) {
 	const { closeModal } = useModal();
 

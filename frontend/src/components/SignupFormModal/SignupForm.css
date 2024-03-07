@@ -54,7 +54,7 @@ form.signup {
 .signup input {
 	height: 40px;
 	border-radius: 4px;
-	width: 100%;
+	width: 250px;
 	border: 1px solid var(--border-color);
 	padding: 0 10px;
 	background-color: white; /* Slightly lighter dark shade for input background */

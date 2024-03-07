@@ -8,17 +8,11 @@ function SignupFormModal() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
-
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState({});
 	const { closeModal } = useModal();
 
-	// const buttonEnable =
-	// 	username.length >= 4 &&
-	// 	password.length >= 6 &&
-	// 	email.length >= 1 &&
-	// 	firstName.length >= 1;
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
@@ -27,7 +21,6 @@ function SignupFormModal() {
 				sessionActions.signup({
 					email,
 					username,
-
 					password,
 				})
 			)
@@ -51,55 +44,60 @@ function SignupFormModal() {
 			<form
 				className="signup"
 				onSubmit={handleSubmit}>
-				<label>
+				<div className="form-field">
+					<label htmlFor="email">Email</label>
 					<input
 						type="text"
+						id="email"
 						value={email}
-						placeholder="Email"
 						onChange={(e) => setEmail(e.target.value)}
 						required
 					/>
-				</label>
-				{errors.email && <p className="error-messages">{errors.email}</p>}
-				<label>
+					{errors.email && <p className="error-messages">{errors.email}</p>}
+				</div>
+				<div className="form-field">
+					<label htmlFor="username">Username</label>
 					<input
 						type="text"
-						placeholder="Username"
+						id="username"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
 						required
 					/>
-				</label>
-				{errors.username && <p className="error-messages">{errors.username}</p>}
-
-				<label>
+					{errors.username && (
+						<p className="error-messages">{errors.username}</p>
+					)}
+				</div>
+				<div className="form-field">
+					<label htmlFor="password">Password</label>
 					<input
 						type="password"
+						id="password"
 						value={password}
-						placeholder="Password"
 						onChange={(e) => setPassword(e.target.value)}
 						required
 					/>
-				</label>
-				{errors.password && <p className="error-messages">{errors.password}</p>}
-				<label>
+					{errors.password && (
+						<p className="error-messages">{errors.password}</p>
+					)}
+				</div>
+				<div className="form-field">
+					<label htmlFor="confirmPassword">Confirm Password</label>
 					<input
 						className="confirm-pass"
 						type="password"
+						id="confirmPassword"
 						value={confirmPassword}
-						placeholder="Confirm Password"
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
 					/>
-				</label>
-				{errors.confirmPassword && (
-					<p className="error-messages">{errors.confirmPassword}</p>
-				)}
+					{errors.confirmPassword && (
+						<p className="error-messages">{errors.confirmPassword}</p>
+					)}
+				</div>
 				<button
 					className="sign-in-button"
-					type="submit"
-					// disabled={!buttonEnable}
-				>
+					type="submit">
 					Sign Up
 				</button>
 			</form>

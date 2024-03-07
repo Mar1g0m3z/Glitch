@@ -130,6 +130,21 @@ button {
 	text-decoration: none;
 	margin: 5px; /* Adds a little space between buttons if they are adjacent */
 }
+
+.review-buttons {
+	display: flex;
+}
+.review-buttons button {
+	width: 50%;
+	height: 40px; /* Adjust height as needed */
+	padding: 5px 10px; /* Adjust padding to ensure text fits well */
+	font-size: 0.9rem;
+	text-align: center; /* Ensure text is centered */
+	white-space: nowrap; /* Prevent text from wrapping to a new line */
+	/* overflow: hidden; Hide overflow text */
+	/* text-overflow: ellipsis; */
+	cursor: pointer;
+}
 .review-buttons > :nth-child(2) {
 	background-color: #ffc107;
 }

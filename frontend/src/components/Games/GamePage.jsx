@@ -17,6 +17,7 @@ const GamePage = () => {
 	const [game, setGame] = useState({});
 	const [userReview, setUserReview] = useState(null);
 	const { gameId } = useParams();
+
 	const baseURL =
 		window.location.hostname === "localhost"
 			? `http://localhost:8000/api/games/${gameId}`
@@ -24,40 +25,33 @@ const GamePage = () => {
 
 	const refreshReviews = useCallback(() => {
 		getReviews(gameId)
-			.then((revRes) => revRes.json())
-			.then((parsedRev) => {
-				setReviews(parsedRev.Reviews);
+			.then((res) => res.json())
+			.then((data) => {
+				setReviews(data.Reviews);
+				// Find and set user review from the refreshed reviews
+				const review = data.Reviews.find(
+					(review) => review.userId === user?.id
+				);
+				setUserReview(review);
 			})
 			.catch((error) => console.error("Error refreshing reviews:", error));
-	}, [gameId]);
+	}, [gameId, user?.id]);
 
 	useEffect(() => {
 		fetch(baseURL)
 			.then((res) => res.json())
-			.then((parsedRes) => {
-				setGame(parsedRes.Game);
+			.then((data) => {
+				setGame(data.Game);
 			})
 			.catch((error) => console.error("Error fetching game:", error));
+
 		refreshReviews();
 	}, [gameId, refreshReviews, baseURL]);
-
-	useEffect(() => {
-		if (user) {
-			const userReview = reviews.find((review) => review.userId === user.id);
-			setUserReview(userReview);
-		}
-	}, [user, reviews]);
-	const handleUpdateReview = (content, rating) => {
-		const updatedReviews = reviews.map((review) =>
-			review.id === userReview.id ? { ...review, content, rating } : review
-		);
-		setReviews(updatedReviews);
-	};
 
 	const handleDeleteReview = async (reviewId) => {
 		try {
 			await deleteReview(reviewId);
-			refreshReviews(); // Update the reviews list after deletion
+			refreshReviews();
 		} catch (error) {
 			console.error("Error deleting review:", error);
 		}
@@ -66,7 +60,7 @@ const GamePage = () => {
 	const handleAddToCart = async () => {
 		try {
 			await addItemToCart({ gameId: Number(gameId), quantity: 1 });
-			navigate("/user/cart"); // Navigate to the cart page
+			navigate("/user/cart");
 		} catch (error) {
 			console.error("Failed to add game to cart:", error);
 			alert("Error adding game to cart.");
@@ -83,7 +77,7 @@ const GamePage = () => {
 						alt={game.name}
 					/>
 					{user && <button onClick={handleAddToCart}>Add to Cart</button>}
-					{user && !userReview ? (
+					{user && !userReview && (
 						<OpenModalButton
 							buttonText="Write Your Review"
 							modalComponent={
@@ -93,7 +87,7 @@ const GamePage = () => {
 								/>
 							}
 						/>
-					) : null}
+					)}
 					<p dangerouslySetInnerHTML={{ __html: game.description }}></p>
 				</div>
 				<div className="review-section">
@@ -101,37 +95,35 @@ const GamePage = () => {
 					<ul className="review-list">
 						{reviews.map((review) => (
 							<li key={review.id}>
-								{review.User.username}: {review.content}{" "}
+								{review.User.username}: {review.content}
 								{review.rating ? <FaThumbsUp /> : <FaThumbsDown />}
+								{userReview && userReview.id === review.id && (
+									<div className="review-buttons">
+										<OpenModalButton
+											buttonText="Edit Review"
+											modalComponent={
+												<EditReviewModal
+													reviewId={userReview.id}
+													initialContent={userReview.content}
+													initialRating={userReview.rating}
+													onUpdate={refreshReviews}
+												/>
+											}
+										/>
+										<OpenModalButton
+											buttonText="Delete Review"
+											modalComponent={
+												<DeleteReviewModal
+													reviewId={userReview.id}
+													onDelete={() => handleDeleteReview(userReview.id)}
+												/>
+											}
+										/>
+									</div>
+								)}
 							</li>
 						))}
 					</ul>
-					{userReview ? (
-						<>
-							<div className="review-buttons">
-								<OpenModalButton
-									buttonText="Edit Review"
-									modalComponent={
-										<EditReviewModal
-											reviewId={userReview.id}
-											initialContent={userReview.content}
-											initialRating={userReview.rating}
-											onUpdate={handleUpdateReview}
-										/>
-									}
-								/>
-								<OpenModalButton
-									buttonText="Delete Review"
-									modalComponent={
-										<DeleteReviewModal
-											reviewId={userReview.id}
-											onDelete={handleDeleteReview}
-										/>
-									}
-								/>
-							</div>
-						</>
-					) : null}
 				</div>
 			</div>
 		</>

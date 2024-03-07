@@ -8,6 +8,7 @@ import CartPage from "./components/Cart/CartPage";
 import * as sessionActions from "./store/session";
 import LandingPage from "./components/LandingPage/LandingPage";
 import GamePage from "./components/Games/GamePage";
+import NotFoundPage from "./components/PageNotFound";
 function Layout() {
 	const dispatch = useDispatch();
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
 				path: "user/cart",
 				element: <CartPage />,
 			},
+			{ path: "*", element: <NotFoundPage /> },
 		],
 	},
 ]);

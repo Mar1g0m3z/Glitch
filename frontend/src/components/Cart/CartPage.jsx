@@ -4,6 +4,8 @@ import {
 	editCartItem,
 	deleteCartItem,
 } from "../../services/cart-service";
+
+import { addToUserLibrary } from "../../services/library-service";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./CartPage.css";
@@ -66,6 +68,7 @@ const CartPage = () => {
 			return;
 		}
 		try {
+			await addToUserLibrary(cart.items.map((item) => item.gameId));
 			// Assuming editCartItem and deleteCartItem can modify the backend
 			// Iterate over all items in the cart and delete them using deleteCartItem
 			for (const item of cart.items) {
@@ -79,9 +82,8 @@ const CartPage = () => {
 			console.error("Failed to clear the cart:", error);
 		}
 	};
-
-	const viewLibraryAlert = () => {
-		alert("Feature coming soon!");
+	const viewLibrary = () => {
+		navigate("/library"); // Assuming '/library' is the route to the user's library
 		setCheckoutCompleted(false);
 	};
 	return (
@@ -91,7 +93,7 @@ const CartPage = () => {
 				{checkoutCompleted ? (
 					<>
 						<p>Thank you for your purchase!</p>
-						<button onClick={viewLibraryAlert}>View Your Library</button>
+						<button onClick={viewLibrary}>View Your Library</button>
 					</>
 				) : cart.items.length === 0 ? (
 					<p>Your cart is empty.</p>

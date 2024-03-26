@@ -44,7 +44,6 @@ const LandingPage = () => {
 		);
 	};
 
-	// Separate games for carousel and cards
 	const carouselGames = games.slice(0, carouselLimit);
 	const cardGames = games.slice(carouselLimit);
 
@@ -64,7 +63,7 @@ const LandingPage = () => {
 								key={carouselGames[currentIndex].id}>
 								{carouselGames[currentIndex].name}
 								<img
-									className="game-pic"
+									className="carousel-pic"
 									src={carouselGames[currentIndex].imageUrl}
 									alt={carouselGames[currentIndex].name}
 								/>
@@ -83,9 +82,10 @@ const LandingPage = () => {
 							key={game.id}
 							className="game-card">
 							<NavLink to={`/games/${game.id}`}>
-								<div>
+								<div className="name-and-pic">
 									{game.name}
 									<img
+										className="game-pic"
 										src={game.imageUrl}
 										alt={game.name}
 									/>

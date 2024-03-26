@@ -8,6 +8,7 @@ import SignupFormModal from "../SignupFormModal";
 import { getCart } from "../../services/cart-service";
 import "./Navigation.css";
 import CartButton from "../Cart/CartButton";
+import LibraryButton from "../Library/LibraryButton";
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector((state) => state.session.user);
@@ -47,6 +48,7 @@ function Navigation({ isLoaded }) {
 		<div className="profile-menu">
 			<CartButton itemCount={cartItemCount} />
 			<ProfileButton user={sessionUser} />
+			<LibraryButton />
 		</div>
 	) : (
 		<>

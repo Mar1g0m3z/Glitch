@@ -109,10 +109,20 @@ NavLink,
 
 .game-card img {
 	max-width: 100%;
-	height: auto;
+	height: 200px;
+
 	border-radius: 3px;
 }
+.carousel-pic {
+	width: 700px;
+	height: 300px;
 
+	border-radius: 3px;
+}
+.name-and-pic {
+	display: flex;
+	flex-direction: column;
+}
 .game-cards-container {
 	display: flex;
 	flex-wrap: wrap;
@@ -122,7 +132,7 @@ NavLink,
 
 .game-pic {
 	max-height: 300px;
-	max-width: 100%;
+	width: 300px;
 	box-sizing: content-box;
 	border-radius: 5px;
 }

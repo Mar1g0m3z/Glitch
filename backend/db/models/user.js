@@ -12,6 +12,11 @@ module.exports = (sequelize, DataTypes) => {
 			User.hasOne(models.Cart, {
 				foreignKey: "userId",
 			});
+			User.hasOne(models.UserLibrary, {
+				foreignKey: "userId",
+				onDelete: "CASCADE",
+				hooks: true,
+			});
 			// define association here
 		}
 	}

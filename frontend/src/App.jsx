@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import CartPage from "./components/Cart/CartPage";
 import * as sessionActions from "./store/session";
+import LibraryPage from "./components/Library/LibraryPage";
 import LandingPage from "./components/LandingPage/LandingPage";
 import GamePage from "./components/Games/GamePage";
 import NotFoundPage from "./components/PageNotFound";
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
 			{
 				path: "user/cart",
 				element: <CartPage />,
+			},
+			{
+				path: "/library",
+				element: <LibraryPage />,
 			},
 			{ path: "*", element: <NotFoundPage /> },
 		],

@@ -5,6 +5,7 @@ const usersRouter = require("./users.js");
 const gamesRouter = require("./games.js");
 const reviewRouter = require("./reviews.js");
 const cartRouter = require("./carts.js");
+const libraryRouter = require("./libraries.js");
 const { restoreUser } = require("../../utils/auth.js");
 
 // Connect restoreUser middleware to the API router
@@ -21,6 +22,7 @@ router.use("/users", usersRouter);
 router.use("/reviews", reviewRouter);
 
 router.use("/user", cartRouter);
+router.use("/library", libraryRouter);
 // router.post("/test", (req, res) => {
 // 	res.json({ requestBody: req.body });
 // });

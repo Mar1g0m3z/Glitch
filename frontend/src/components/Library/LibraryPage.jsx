@@ -5,16 +5,18 @@ import "./LibraryPage.css"; // Adjust the CSS path as necessary
 
 const LibraryPage = () => {
 	const [libraryItems, setLibraryItems] = useState([]);
+	const [filteredItems, setFilteredItems] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState("");
+	const [filterType, setFilterType] = useState("alphabetical");
+	const [searchQuery, setSearchQuery] = useState("");
 	const navigate = useNavigate();
 
-	const sessionUser = useSelector((state) => state.session.user); // Example selector, adjust based on your state shape
+	const sessionUser = useSelector((state) => state.session.user);
 
 	useEffect(() => {
-		// Check if there's a logged-in user
 		if (!sessionUser) {
-			navigate("/"); // Redirect to home if no user is logged in
+			navigate("/");
 		}
 	}, [sessionUser, navigate]);
 
@@ -36,6 +38,7 @@ const LibraryPage = () => {
 				const data = await response.json();
 				const groupedItems = groupLibraryItems(data.libraryItems);
 				setLibraryItems(groupedItems);
+				setFilteredItems(sortItems(groupedItems, filterType));
 			} catch (error) {
 				console.error("Error fetching library items:", error);
 				setError("Failed to load library items");
@@ -46,6 +49,16 @@ const LibraryPage = () => {
 
 		fetchLibraryItems();
 	}, []);
+
+	useEffect(() => {
+		let items = sortItems([...libraryItems], filterType);
+		if (searchQuery) {
+			items = items.filter((item) =>
+				item.name.toLowerCase().includes(searchQuery.toLowerCase())
+			);
+		}
+		setFilteredItems(items);
+	}, [filterType, searchQuery, libraryItems]);
 
 	const groupLibraryItems = (items) => {
 		const grouped = items.reduce((acc, item) => {
@@ -75,6 +88,19 @@ const LibraryPage = () => {
 			).toLocaleDateString(),
 		}));
 	};
+	const sortItems = (items, filterType) => {
+		switch (filterType) {
+			case "alphabetical":
+				return items.sort((a, b) => a.name.localeCompare(b.name));
+			case "datePurchased":
+				return items.sort(
+					(a, b) =>
+						new Date(b.latestPurchaseDate) - new Date(a.latestPurchaseDate)
+				);
+			default:
+				return items;
+		}
+	};
 
 	if (loading) {
 		return <div>Loading...</div>;
@@ -87,9 +113,23 @@ const LibraryPage = () => {
 	return (
 		<div className="library-container">
 			<h2>My Library</h2>
-			{libraryItems.length > 0 ? (
+			<div>
+				<select
+					onChange={(e) => setFilterType(e.target.value)}
+					value={filterType}>
+					<option value="alphabetical">Alphabetical</option>
+					<option value="datePurchased">Date Purchased</option>
+				</select>
+				<input
+					type="text"
+					placeholder="Search games..."
+					value={searchQuery}
+					onChange={(e) => setSearchQuery(e.target.value)}
+				/>
+			</div>
+			{filteredItems.length > 0 ? (
 				<ul>
-					{libraryItems.map((item) => (
+					{filteredItems.map((item) => (
 						<li key={item.name}>
 							<img
 								src={item.image}
@@ -102,10 +142,9 @@ const LibraryPage = () => {
 					))}
 				</ul>
 			) : (
-				<p>Your library is empty.</p>
+				<p>No games found.</p>
 			)}
 		</div>
 	);
 };
-
 export default LibraryPage;

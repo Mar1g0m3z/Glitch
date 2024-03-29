@@ -3,7 +3,7 @@
 import { useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import "./CartButton.css";
-const CartButton = ({ itemCount = 0 }) => {
+const CartButton = ({ title, itemCount = 0 }) => {
 	let navigate = useNavigate();
 
 	const goToCart = () => {
@@ -11,9 +11,13 @@ const CartButton = ({ itemCount = 0 }) => {
 	};
 
 	return (
-		<button onClick={goToCart}>
+		<button
+			className="cart-button"
+			title={title}
+			onClick={goToCart}>
 			<FaShoppingCart />
 			{itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
+			<span className="tooltip">Cart</span>
 		</button>
 	);
 };

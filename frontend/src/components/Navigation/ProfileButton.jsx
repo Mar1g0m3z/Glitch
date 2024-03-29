@@ -41,6 +41,7 @@ function ProfileButton({ user }) {
 				className="user-profile-button"
 				onClick={toggleMenu}>
 				<FaUser></FaUser>
+				<span className="tooltip">User</span>
 			</button>
 			<ul
 				className={ulClassName}

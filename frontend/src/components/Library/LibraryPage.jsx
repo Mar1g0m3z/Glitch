@@ -113,7 +113,7 @@ const LibraryPage = () => {
 	return (
 		<div className="library-container">
 			<h2>My Library</h2>
-			<div>
+			<div className="filter">
 				<select
 					onChange={(e) => setFilterType(e.target.value)}
 					value={filterType}>
@@ -128,16 +128,20 @@ const LibraryPage = () => {
 				/>
 			</div>
 			{filteredItems.length > 0 ? (
-				<ul>
+				<ul className="game-lib">
 					{filteredItems.map((item) => (
-						<li key={item.name}>
+						<li
+							className="game-container"
+							key={item.name}>
 							<img
+								className="game-img"
 								src={item.image}
 								alt={item.name}
-								style={{ width: "100px", height: "100px" }}
 							/>
-							{item.name} - Copies: {item.count} - Latest Purchase on:{" "}
-							{item.latestPurchaseDate}
+							<div className="game-stuff">
+								{item.name} - Copies: {item.count} <br /> Latest Purchase on:
+								{item.latestPurchaseDate}
+							</div>
 						</li>
 					))}
 				</ul>

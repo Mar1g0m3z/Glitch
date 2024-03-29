@@ -45,3 +45,74 @@ NavLink:hover,
 	height: 10%;
 	background-color: none;
 }
+
+.library-button .tooltip {
+	visibility: hidden;
+	width: 120px;
+
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	position: absolute;
+	z-index: 1;
+	top: 140px;
+	right: 110px;
+	margin-left: -50px;
+
+	/* Fade in tooltip */
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.library-button:hover .tooltip {
+	visibility: visible;
+	opacity: 1;
+}
+.cart-button .tooltip {
+	visibility: hidden;
+	width: 120px;
+
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	position: absolute;
+	z-index: 1;
+	top: 40px;
+	right: 110px;
+	margin-left: -50px;
+
+	/* Fade in tooltip */
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.cart-button:hover .tooltip {
+	visibility: visible;
+	opacity: 1;
+}
+
+.user-profile-button .tooltip {
+	visibility: hidden;
+	width: 120px;
+
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	position: absolute;
+	z-index: 1;
+	top: 90px;
+	right: 110px;
+	margin-left: -50px;
+
+	/* Fade in tooltip */
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.user-profile-button:hover .tooltip {
+	visibility: visible;
+	opacity: 1;
+}

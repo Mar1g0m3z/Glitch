@@ -15,6 +15,7 @@ const LibraryButton = () => {
 			className="library-button"
 			onClick={goToLibrary}>
 			<FaGamepad />
+			<span className="tooltip">Library</span>
 		</button>
 	);
 };

@@ -48,7 +48,7 @@ function Navigation({ isLoaded }) {
 		<div className="profile-menu">
 			<CartButton itemCount={cartItemCount} />
 			<ProfileButton user={sessionUser} />
-			<LibraryButton />
+			<LibraryButton user={sessionUser} />
 		</div>
 	) : (
 		<>

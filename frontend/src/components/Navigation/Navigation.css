@@ -5,7 +5,19 @@ li {
 	padding: 0;
 	margin: 0;
 }
-
+button {
+	padding: 12px 24px;
+	border-radius: 8px;
+	border: none;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.2s;
+	display: inline-block;
+	color: #fff;
+	background-color: #5c7e0f;
+	text-decoration: none;
+	margin: 5px;
+}
 /* Navigation Bar Background and Layout */
 header,
 ul {

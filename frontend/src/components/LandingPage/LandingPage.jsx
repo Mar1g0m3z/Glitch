@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+
 import "./LandingPage.css";
 const LandingPage = () => {
 	const [games, setGames] = useState([]);
@@ -53,7 +54,7 @@ const LandingPage = () => {
 				<div className="carousel-container">
 					<button
 						onClick={goToPrevGame}
-						className="carousel-button">
+						className="carousel-button-prev">
 						{"<"}
 					</button>
 					{carouselGames.length > 0 && (
@@ -72,7 +73,7 @@ const LandingPage = () => {
 					)}
 					<button
 						onClick={goToNextGame}
-						className="carousel-button">
+						className="carousel-button-next">
 						{">"}
 					</button>
 				</div>

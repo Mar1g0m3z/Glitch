@@ -10,6 +10,7 @@ import LibraryPage from "./components/Library/LibraryPage";
 import LandingPage from "./components/LandingPage/LandingPage";
 import GamePage from "./components/Games/GamePage";
 import NotFoundPage from "./components/PageNotFound";
+import "flowbite";
 function Layout() {
 	const dispatch = useDispatch();
 	const [isLoaded, setIsLoaded] = useState(false);

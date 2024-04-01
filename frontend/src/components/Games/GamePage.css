@@ -129,23 +129,29 @@ button {
 	color: #fff;
 	background-color: #5c7e0f;
 	text-decoration: none;
-	margin: 5px; /* Adds a little space between buttons if they are adjacent */
+	margin: 5px;
 }
 
+.review-buttons svg {
+	width: 100%;
+	margin: 0;
+}
 .review-buttons {
-	display: flex;
+	display: flex; /* Aligns children (buttons) horizontally */
+	gap: 10px; /* Adds some space between the buttons */
+	justify-content: center; /* Center the buttons horizontally within the container */
+	align-items: center; /* Align the buttons vertically in the middle */
 }
 .review-buttons button {
-	width: 50%;
-	height: 40px; /* Adjust height as needed */
-	padding: 5px 10px; /* Adjust padding to ensure text fits well */
-	font-size: 0.9rem;
-	text-align: center; /* Ensure text is centered */
-	white-space: nowrap; /* Prevent text from wrapping to a new line */
-	/* overflow: hidden; Hide overflow text */
-	/* text-overflow: ellipsis; */
-	cursor: pointer;
+	padding: 5px; /* Reduce padding to decrease button size */
+	display: flex; /* Use flex to center content */
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 25%;
 }
+
 .review-buttons > :nth-child(2) {
 	background-color: #ffc107;
 }

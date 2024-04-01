@@ -8,7 +8,7 @@ import { addItemToCart } from "../../services/cart-service";
 import DeleteReviewModal from "../Reviews/DeleteReviewModal";
 import { getReviews, deleteReview } from "../../services/review-service";
 import EditReviewModal from "../Reviews/EditReviewModal";
-import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { FaThumbsUp, FaThumbsDown, FaTrash, FaPen } from "react-icons/fa";
 import "./GamePage.css";
 const GamePage = () => {
 	const navigate = useNavigate(); // Initialize useNavigate
@@ -100,7 +100,6 @@ const GamePage = () => {
 								{userReview && userReview.id === review.id && (
 									<div className="review-buttons">
 										<OpenModalButton
-											buttonText="Edit Review"
 											modalComponent={
 												<EditReviewModal
 													reviewId={userReview.id}
@@ -108,17 +107,18 @@ const GamePage = () => {
 													initialRating={userReview.rating}
 													onUpdate={refreshReviews}
 												/>
-											}
-										/>
+											}>
+											<FaPen title="Edit Review" />
+										</OpenModalButton>
 										<OpenModalButton
-											buttonText="Delete Review"
 											modalComponent={
 												<DeleteReviewModal
 													reviewId={userReview.id}
 													onDelete={() => handleDeleteReview(userReview.id)}
 												/>
-											}
-										/>
+											}>
+											<FaTrash title="Delete Review" />
+										</OpenModalButton>
 									</div>
 								)}
 							</li>

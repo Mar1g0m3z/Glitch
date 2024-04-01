@@ -19,6 +19,11 @@ function EditReviewModal({
 			setError("Review content cannot be empty.");
 			return;
 		}
+		if (content.length > 255) {
+			setError("Review can't be more than 255 characters");
+			return;
+		}
+
 		setError(""); // Clear any existing error
 		try {
 			await editReview(reviewId, { content, rating });
